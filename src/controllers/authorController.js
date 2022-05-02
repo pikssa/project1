@@ -34,10 +34,7 @@ const createAuthor = async function (req, res) {
         let pattern = /^[A-Za-z0-9._]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/
 
         if (!pattern.test(author.email)) { return res.status(400).send({ status: false, message: "email is not valid" }) }
-
-        if (author.email) {let check=await AuthorModel.findOne(author.email)
-        if(!check==null)
-        { return res.status(400).send({ status: false, message: "email is already registered" })} }
+        
         else {
             let authorCreated = await AuthorModel.create(author)
             res.status(201).send({ status:true,data: authorCreated })
