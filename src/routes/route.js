@@ -14,7 +14,7 @@ router.put("/blogs/:blogId", Middleware.authentication,Middleware.authorization,
 
 router.get("/getBlogList",Middleware.authentication, blogController.Bloglist)
 
-router.delete("/blogs", Middleware.authentication,Middleware.authorization,blogController.updateBlogData)
+router.delete("/blogs", Middleware.authentication,Middleware.authorization,blogController.deleteData)
 
 router.delete("/blog/:blogId",Middleware.authentication,Middleware.authorization,blogController.deleteBlogData)
 
