@@ -35,6 +35,9 @@ const createAuthor = async function (req, res) {
 
         if (!pattern.test(author.email)) { return res.status(400).send({ status: false, message: "email is not valid" }) }
 
+        if (author.email) {let check=await AuthorModel.findOne(author.email)
+        if(!author.email==null)
+        { return res.status(400).send({ status: false, message: "email is already registered" })} }
         else {
             let authorCreated = await AuthorModel.create(author)
             res.status(201).send({ status:true,data: authorCreated })
