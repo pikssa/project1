@@ -24,9 +24,9 @@ const createAuthor = async function (req, res) {
 
         if (["Mr", "Mrs", "Miss"].indexOf(author.title)== -1) { return res.status(400).send({ status: false, message: "title should be Mr,Miss,Mrs" }) }
 
-        if (!valid(author.firstName)) { return res.status(400).send({ status: false, message: "author first name is not valid" }) }
+        if (!valid(author.fname)) { return res.status(400).send({ status: false, message: "author first name is not valid" }) }
 
-        if (!valid(author.lastName)) { return res.status(400).send({ status: false, message: "author last name must is not valid " }) }
+        if (!valid(author.lname)) { return res.status(400).send({ status: false, message: "author last name must is not valid " }) }
 
         if (!valid(author.password)) { return res.status(400).send({ status: false, message: "password name is not valid" }) }
 
