@@ -117,7 +117,7 @@ const BlogById = async function (req, res) {
                
             }
         }
-        let list = await blogModel.findOneAndUpdate({ _id: id, isDeleted: false} ,  {$addToSet: {tags: {$each:blogData.tags||[]},subcategory:{$each:blogData.subCategory||[]}},title: blogData.title, body: blogData.body,publishedAt: new Date(),isPublished: true},{new: true})
+        let list = await blogModel.findOneAndUpdate({ _id: id, isDeleted: false} ,  {$addToSet: {tags: {$each:blogData.tags},subcategory:{$each:blogData.subCategory}},title: blogData.title, body: blogData.body,publishedAt: new Date(),isPublished: true},{new: true})
         if (list == null) {
             res.status(404).send({ status: false, msg: "blog not found" })
         }
@@ -144,7 +144,7 @@ const deleteBlogData = async function (req, res) {
 
 }
 
-const updateBlogData = async function (req, res) {
+const deleteData = async function (req, res) {
 
 
 
@@ -154,7 +154,7 @@ const updateBlogData = async function (req, res) {
 
         if (!data) return res.status(400).send({ error: "Enter Valid Input " })
 
-        const dataforUpdation = { ...data, isDeleted:false, isDeletedAt:new Date() }
+        const dataforUpdation = { ...data, isDeleted:true, isDeletedAt:new Date() }
 
         const result = await blogModel.updateMany(data, dataforUpdation, { new: true })
 
@@ -178,7 +178,7 @@ module.exports.Bloglist = Bloglist
 
 module.exports.BlogById = BlogById
 
-module.exports.updateBlogData = updateBlogData
+module.exports.deleteData = deleteData
 
 
 module.exports.deleteBlogData = deleteBlogData
