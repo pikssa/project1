@@ -12,9 +12,9 @@ const createAuthor = async function (req, res) {
         let author = req.body
         if (!author.title) { return res.status(400).send({ status: false, message: "title is required" }) }
 
-        if (!author.firstName) { return res.status(400).send({ status: false, message: "author first name is required" }) }
+        if (!author.fname) { return res.status(400).send({ status: false, message: "author first name is required" }) }
 
-        if (!author.lastName) { return res.status(400).send({ status: false, message: "author last name is required" }) }
+        if (!author.lname) { return res.status(400).send({ status: false, message: "author last name is required" }) }
 
         if (!author.email) { return res.status(400).send({ status: false, message: "email is required" }) }
 
